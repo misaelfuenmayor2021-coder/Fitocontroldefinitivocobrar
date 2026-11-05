@@ -1,0 +1,1752 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Fitocosmética y Perfumes 100% - Control de Cobranzas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #f1f7f3;
+      --card-bg: #ffffff;
+      --primary-pastel: #88c999;
+      --primary-dark: #2d6a4f;
+      --primary-deep: #183e2d;
+      --accent-soft: #d8f3dc;
+      --accent-mint: #b7e4c7;
+      --accent-gold: #c98a12;
+      --text-main: #143525;
+      --text-muted: #52796f;
+      --danger-pastel: #fde2e4;
+      --danger-dark: #b91c1c;
+      --border-soft: #cfe3d7;
+      --wa-color: #25d366;
+      --wa-dark: #1ea952;
+      --shadow-soft: 0 4px 14px rgba(45, 106, 79, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 490px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 30px;
+    }
+
+    /* Encabezado */
+    .header-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--primary-deep);
+      letter-spacing: -0.3px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .session-badge {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .cloud-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .cloud-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #94a3b8;
+      transition: background 0.3s;
+    }
+
+    .cloud-dot.online {
+      background: #16a34a;
+      box-shadow: 0 0 6px rgba(22, 163, 74, 0.6);
+    }
+
+    .bcv-box {
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-mint);
+      padding: 5px 11px;
+      border-radius: 10px;
+      text-align: right;
+    }
+
+    .bcv-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .bcv-val {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--primary-deep);
+    }
+
+    /* Anuncios */
+    .promo-card {
+      background: linear-gradient(135deg, #e9f8ee 0%, #d8f3dc 100%);
+      border: 1px solid #b7e4c7;
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .promo-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--primary-dark);
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 5px;
+    }
+
+    .promo-text {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--primary-deep);
+      line-height: 1.45;
+    }
+
+    /* Botón Compartir por WhatsApp */
+    .btn-wa-full {
+      width: 100%;
+      background-color: var(--wa-color);
+      color: white;
+      border: none;
+      border-radius: 13px;
+      padding: 13px 14px;
+      font-weight: 800;
+      font-size: 13.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.28);
+      transition: all 0.15s;
+    }
+
+    .btn-wa-full:active {
+      background-color: var(--wa-dark);
+      transform: scale(0.99);
+    }
+
+    /* Métricas */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric-card.full-row {
+      grid-column: span 2;
+      background: #edf7f1;
+      border-color: #c0e5cd;
+    }
+
+    .metric-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .metric-num {
+      font-size: 16.5px;
+      font-weight: 800;
+      margin-top: 3px;
+      letter-spacing: -0.3px;
+    }
+
+    /* Pestañas */
+    .tabs-strip {
+      display: flex;
+      background: #e3eee6;
+      padding: 4px;
+      border-radius: 12px;
+      gap: 4px;
+    }
+
+    .tab-pill {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 9px 4px;
+      font-size: 11.5px;
+      font-weight: 700;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: center;
+    }
+
+    .tab-pill.active {
+      background: var(--card-bg);
+      color: var(--primary-deep);
+      box-shadow: 0 2px 6px rgba(45, 106, 79, 0.08);
+    }
+
+    /* Paneles de Contenido */
+    .content-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .panel-headline {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-deep);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      background: #fbfdfc;
+      border: 1.5px solid var(--border-soft);
+      color: var(--text-main);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: var(--primary-dark);
+      background: #ffffff;
+    }
+
+    /* Tarjeta fija para cobrador en ruta individual (Bloqueo de seguridad) */
+    .cobrador-badge-box {
+      background: #eef7f2;
+      border: 1.5px solid var(--accent-mint);
+      border-radius: 11px;
+      padding: 11px 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cobrador-badge-nombre {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-deep);
+    }
+
+    .cobrador-badge-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #166534;
+      background: var(--accent-mint);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--accent-soft);
+      padding: 9px 12px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-deep);
+    }
+
+    .btn-action-primary {
+      background: var(--primary-dark);
+      color: white;
+      border: none;
+      border-radius: 11px;
+      padding: 12px;
+      font-weight: 700;
+      font-size: 13.5px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(45, 106, 79, 0.2);
+      transition: all 0.15s;
+    }
+
+    .btn-action-primary:active {
+      transform: scale(0.98);
+      background: var(--primary-deep);
+    }
+
+    .btn-action-teal {
+      background: #2a9d8f;
+      color: white;
+      border: none;
+      border-radius: 11px;
+      padding: 12px;
+      font-weight: 700;
+      font-size: 13.5px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(42, 157, 143, 0.2);
+    }
+
+    /* Listas y Botón Dar de Baja */
+    .list-box {
+      max-height: 230px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .list-card {
+      background: #f8fbf9;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+    }
+
+    .btn-remove-soft {
+      background: var(--danger-pastel);
+      color: var(--danger-dark);
+      border: 1px solid #fecdd3;
+      border-radius: 7px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-remove-soft:active {
+      background: #fda4af;
+    }
+
+    /* Cuentas Bancarias Info */
+    .bank-card {
+      background: #f7fbf9;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .bank-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-bottom: 7px;
+      border-bottom: 1px dashed var(--border-soft);
+    }
+
+    .bank-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .bank-item-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .bank-item-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-deep);
+      word-break: break-all;
+    }
+
+    /* Modales Backdrop */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(19, 51, 36, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 14px;
+    }
+
+    /* TECLADO PIN TÁCTIL */
+    .pin-modal-card {
+      background: white;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 320px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .pin-dots {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+    }
+
+    .pin-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-pastel);
+      background: transparent;
+      transition: all 0.15s;
+    }
+
+    .pin-dot.filled {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: scale(1.1);
+    }
+
+    .keypad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+
+    .key-btn {
+      background: #f2f7f4;
+      border: 1px solid var(--border-soft);
+      color: var(--primary-deep);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 13px 0;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.1s;
+    }
+
+    .key-btn:active {
+      background: var(--accent-mint);
+    }
+
+    .key-btn.action-key {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--danger-dark);
+      background: var(--danger-pastel);
+      border-color: #fecdd3;
+    }
+
+    /* Modal del Panel Maestro */
+    .modal-sheet {
+      background: white;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .modal-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--primary-deep);
+    }
+
+    .btn-close-modal {
+      background: #f0fdf4;
+      border: 1px solid var(--border-soft);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    /* Sub-pestañas Modal Admin */
+    .admin-subtabs {
+      display: flex;
+      gap: 4px;
+      background: #eef5f1;
+      padding: 4px;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+
+    .admin-subtab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 7px 3px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 7px;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .admin-subtab-btn.active {
+      background: white;
+      color: var(--primary-dark);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .empty-alert {
+      text-align: center;
+      padding: 16px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-shell">
+  
+  <!-- Encabezado con Marca y Tasa (Acceso Secreto en el Título: 5 toques rápidos) -->
+  <div class="header-card">
+    <div>
+      <div class="brand-title" id="tituloMarcaSecreta" onclick="detectarToquesSecretos()">
+        Fitocosmética y Perfumes 100%
+      </div>
+      <div class="session-badge" id="lblSesionActiva">Ruta: Consolidado General</div>
+      <div class="cloud-status">
+        <span class="cloud-dot" id="cloudStatusDot"></span>
+        <span id="cloudStatusTxt">Conectando...</span>
+      </div>
+    </div>
+    <div class="bcv-box">
+      <div class="bcv-lbl">Tasa BCV</div>
+      <div class="bcv-val" id="lblTasaBCV">Bs. 0,00</div>
+    </div>
+  </div>
+
+  <!-- Tablón de Promociones / Novedades -->
+  <div class="promo-card">
+    <div class="promo-chip">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Aviso y Promociones
+    </div>
+    <div class="promo-text" id="lblPromoTexto">
+      ¡Por cada 10 unidades de Perfumes cobradas de contado, gana 1 mini spray de 3ml de comisión especial!
+    </div>
+  </div>
+
+  <!-- Botón Compartir por WhatsApp -->
+  <div>
+    <button class="btn-wa-full" onclick="compartirWhatsApp()">
+      <svg width="19" height="19" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.761.815 2.791.816h.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.769-5.766zm0 10.514c-.879 0-1.666-.24-2.355-.668l-.169-.105-1.577.413.421-1.537-.111-.177c-.47-.747-.722-1.575-.721-2.427.001-2.457 2.001-4.457 4.459-4.457 2.457 0 4.457 2.001 4.457 4.457 0 2.458-2.001 4.458-4.458 4.458z"/></svg>
+      Compartir Enlace por WhatsApp
+    </button>
+  </div>
+
+  <!-- Métricas Clave -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-tag">Cartera en Calle</div>
+      <div class="metric-num" style="color: var(--danger-dark);" id="metCarteraTotal">$0.00</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-tag">Cobrado Total ($)</div>
+      <div class="metric-num" style="color: var(--primary-dark);" id="metCobradoUSD">$0.00</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-tag">Cobrado Total (Bs)</div>
+      <div class="metric-num" style="color: #0d9488;" id="metCobradoBs">Bs. 0,00</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-tag">Comisiones Cobrador</div>
+      <div class="metric-num" style="color: var(--accent-gold);" id="metComisionesTotal">$0.00</div>
+    </div>
+    <div class="metric-card full-row">
+      <div class="metric-tag">Dinero Entregado al Dueño (Rendiciones)</div>
+      <div class="metric-num" style="color: var(--primary-deep);" id="metRendidoTotal">$0.00</div>
+    </div>
+  </div>
+
+  <!-- Barra de Pestañas para el Cobrador -->
+  <div class="tabs-strip">
+    <button class="tab-pill active" id="btnTabCobrar" onclick="cambiarPestana('tabCobrar', this)">Cobrar</button>
+    <button class="tab-pill" onclick="cambiarPestana('tabRendir', this)">Rendir $</button>
+    <button class="tab-pill" onclick="cambiarPestana('tabNuevoCli', this)">+ Cliente</button>
+    <button class="tab-pill" onclick="cambiarPestana('tabCuentas', this)">Cuentas</button>
+  </div>
+
+  <!-- Vista: Cobrar -->
+  <div id="tabCobrar" class="content-panel">
+    <div class="panel-headline">
+      <span>Registrar Pago de Cliente</span>
+      <span id="lblBadgePorcentaje" style="background:var(--accent-mint); color:var(--primary-deep); font-size:11px; padding:3px 8px; border-radius:6px; font-weight:700;">Comisión: 0%</span>
+    </div>
+
+    <!-- Identificación del Cobrador: Selector para Administrador o Ficha Fija Bloqueada para Cobrador -->
+    <div class="form-group" id="grpCobradorSelector">
+      <label class="form-label">Cobrador en Operación</label>
+      <select id="selCobradorActivo" class="form-select" onchange="alCambiarCobradorActivo()"></select>
+    </div>
+
+    <div class="form-group" id="grpCobradorFijo" style="display: none;">
+      <label class="form-label">Cobrador Asignado a esta Ruta</label>
+      <div class="cobrador-badge-box">
+        <span class="cobrador-badge-nombre" id="lblCobradorFijoNombre">---</span>
+        <span class="cobrador-badge-tag" id="lblCobradorFijoTag">Ruta Protegida</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Fecha y Hora de Cobro</label>
+      <input type="datetime-local" id="cobroFechaHora" class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Cliente a Cobrar</label>
+      <select id="selClienteCobro" class="form-select">
+        <option value="">-- Selecciona el cliente --</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Monto Cobrado ($)</label>
+      <input type="number" id="cobroMontoUSD" class="form-input" placeholder="0.00" step="0.01" oninput="actualizarCalcEquivalenteBs()">
+    </div>
+
+    <div class="calc-row">
+      <span>Equivalente según Tasa BCV:</span>
+      <span id="cobroEquivBsLbl" style="font-size:13px; font-weight:800;">Bs. 0,00</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Método de Pago</label>
+      <select id="selCobroMetodo" class="form-select">
+        <option value="Divisas Efectivo">Divisas en Efectivo ($)</option>
+        <option value="Pago Móvil Recibido">Pago Móvil Recibido</option>
+        <option value="Transferencia Banesco">Transferencia Directa Banesco</option>
+        <option value="Bolívares Efectivo">Bolívares en Efectivo</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Referencia / Comprobante</label>
+      <input type="text" id="cobroReferencia" class="form-input" placeholder="Ej. 658912 o 'Efectivo en mano'">
+    </div>
+
+    <button class="btn-action-primary" onclick="ejecutarCobro()">Registrar Cobro y Descontar Saldo</button>
+  </div>
+
+  <!-- Vista: Rendir Dinero -->
+  <div id="tabRendir" class="content-panel" style="display: none;">
+    <div class="panel-headline">Rendir Dinero Entregado al Dueño</div>
+
+    <div class="form-group">
+      <label class="form-label">Fecha y Hora de Entrega</label>
+      <input type="datetime-local" id="rendirFechaHora" class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Modalidad de Entrega</label>
+      <select id="rendirTipo" class="form-select">
+        <option value="Efectivo USD al Dueño">Efectivo Divisas ($) en Mano</option>
+        <option value="Pago Móvil a Banesco Dueño">Pago Móvil a Cuenta del Dueño</option>
+        <option value="Transferencia Banesco Dueño">Transferencia a Cuenta Banesco</option>
+        <option value="Binance USDT">Transferencia por Binance (USDT)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Monto Entregado ($)</label>
+      <input type="number" id="rendirMontoUSD" class="form-input" placeholder="0.00" step="0.01">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">N° de Comprobante / Referencia de Pago</label>
+      <input type="text" id="rendirReferencia" class="form-input" placeholder="Ej. Ref 982134">
+    </div>
+
+    <button class="btn-action-teal" onclick="ejecutarRendicion()">Registrar Entrega de Fondos</button>
+  </div>
+
+  <!-- Vista: Clientes (Alta y Dar de Baja) -->
+  <div id="tabNuevoCli" class="content-panel" style="display: none;">
+    <div class="panel-headline">Dar de Alta a Nuevo Cliente</div>
+
+    <div class="form-group">
+      <label class="form-label">Nombre del Cliente / Negocio</label>
+      <input type="text" id="nuevoCliNombre" class="form-input" placeholder="Ej. Perfumería La Fe">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Teléfono de Contacto</label>
+      <input type="text" id="nuevoCliTelf" class="form-input" placeholder="0412-0000000">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Dirección o Sector</label>
+      <input type="text" id="nuevoCliDir" class="form-input" placeholder="Sector Centro, Calle 4">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Saldo Inicial Deudor ($)</label>
+      <input type="number" id="nuevoCliDeuda" class="form-input" placeholder="0.00" step="0.01">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Cobrador Asignado</label>
+      <select id="nuevoCliCobradorSel" class="form-select"></select>
+    </div>
+
+    <button class="btn-action-primary" onclick="ejecutarGuardarCliente()">Guardar Cliente</button>
+
+    <div class="panel-headline" style="margin-top: 10px; font-size: 13px;">Clientes Registrados (Dar de Baja)</div>
+    <div class="list-box" id="listaClientesRegistrados"></div>
+  </div>
+
+  <!-- Vista: Cuentas Receptores Oficiales (Visible para el Cobrador) -->
+  <div id="tabCuentas" class="content-panel" style="display: none;">
+    <div class="panel-headline">Cuentas Oficiales para Depósitos y Pagos</div>
+    <div class="bank-card" id="boxDatosBancarios"></div>
+  </div>
+
+</div>
+
+<!-- MODAL TÁCTIL: INGRESO DE PIN DEL DUEÑO (DOBLE SEGURIDAD) -->
+<div class="modal-backdrop" id="modalPin">
+  <div class="pin-modal-card">
+    <div style="font-size: 14px; font-weight: 800; color: var(--primary-deep);">Acceso Confidencial</div>
+    <div style="font-size: 11.5px; color: var(--text-muted); text-align: center;">Introduce el PIN de 4 dígitos para ingresar</div>
+    
+    <div class="pin-dots">
+      <div class="pin-dot" id="dot0"></div>
+      <div class="pin-dot" id="dot1"></div>
+      <div class="pin-dot" id="dot2"></div>
+      <div class="pin-dot" id="dot3"></div>
+    </div>
+
+    <div class="keypad-grid">
+      <button class="key-btn" onclick="presionarTeclaPin('1')">1</button>
+      <button class="key-btn" onclick="presionarTeclaPin('2')">2</button>
+      <button class="key-btn" onclick="presionarTeclaPin('3')">3</button>
+      <button class="key-btn" onclick="presionarTeclaPin('4')">4</button>
+      <button class="key-btn" onclick="presionarTeclaPin('5')">5</button>
+      <button class="key-btn" onclick="presionarTeclaPin('6')">6</button>
+      <button class="key-btn" onclick="presionarTeclaPin('7')">7</button>
+      <button class="key-btn" onclick="presionarTeclaPin('8')">8</button>
+      <button class="key-btn" onclick="presionarTeclaPin('9')">9</button>
+      <button class="key-btn action-key" onclick="cerrarModalPin()">SALIR</button>
+      <button class="key-btn" onclick="presionarTeclaPin('0')">0</button>
+      <button class="key-btn action-key" onclick="borrarTeclaPin()">⌫</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: PANEL MAESTRO (ADMINISTRADOR) -->
+<div class="modal-backdrop" id="modalAdmin">
+  <div class="modal-sheet">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">Panel Maestro de Control Central</div>
+        <div style="font-size: 11px; color: var(--text-muted);">Administración General del Dueño</div>
+      </div>
+      <button class="btn-close-modal" onclick="cerrarPanelAdmin()">✕</button>
+    </div>
+
+    <!-- Subpestañas del Administrador -->
+    <div class="admin-subtabs">
+      <button class="admin-subtab-btn active" onclick="cambiarSubtabAdmin('admTabCobradores', this)">Cobradores</button>
+      <button class="admin-subtab-btn" onclick="cambiarSubtabAdmin('admTabCobros', this)">Cobros</button>
+      <button class="admin-subtab-btn" onclick="cambiarSubtabAdmin('admTabRendiciones', this)">Rendiciones</button>
+      <button class="admin-subtab-btn" onclick="cambiarSubtabAdmin('admTabMercancia', this)">Mercancía</button>
+      <button class="admin-subtab-btn" onclick="cambiarSubtabAdmin('admTabAjustes', this)">Ajustes</button>
+    </div>
+
+    <!-- Subvista: Cobradores (Alta, % individual y Dar de Baja) -->
+    <div id="admTabCobradores" style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="form-group">
+        <label class="form-label">Nombre del Nuevo Cobrador</label>
+        <input type="text" id="adminNuevoCobradorNombre" class="form-input" placeholder="Ej. Elianai Piamo">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Porcentaje de Comisión (%)</label>
+        <input type="number" id="adminNuevoCobradorPct" class="form-input" placeholder="Ej. 20" step="1">
+      </div>
+      <button class="btn-action-primary" onclick="adminGuardarCobrador()">Guardar Cobrador</button>
+
+      <div class="form-label" style="margin-top: 6px;">Cobradores Activos (Dar de Baja)</div>
+      <div class="list-box" id="adminListaCobradores"></div>
+    </div>
+
+    <!-- Subvista: Historial de Cobros en Calle -->
+    <div id="admTabCobros" style="display: none; flex-direction: column; gap: 8px;">
+      <div class="form-label">Auditoría de Cobros Recibidos</div>
+      <div class="list-box" id="adminListaHistorialCobros"></div>
+    </div>
+
+    <!-- Subvista: Historial de Rendiciones al Dueño -->
+    <div id="admTabRendiciones" style="display: none; flex-direction: column; gap: 8px;">
+      <div class="form-label">Entregas de Fondos al Dueño</div>
+      <div class="list-box" id="adminListaHistorialRendiciones"></div>
+    </div>
+
+    <!-- Subvista: Asignación de Mercancía / Perfumes -->
+    <div id="admTabMercancia" style="display: none; flex-direction: column; gap: 10px;">
+      <div class="form-group">
+        <label class="form-label">Fecha de Entrega</label>
+        <input type="datetime-local" id="loteFecha" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Producto / Descripción</label>
+        <input type="text" id="loteProducto" class="form-input" placeholder="Ej. Perfumes Dama 100ml, Muestras 3ml">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Cantidad de Unidades</label>
+        <input type="number" id="loteCantidad" class="form-input" placeholder="Ej. 70">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Cobrador Receptor</label>
+        <select id="loteCobradorSel" class="form-select"></select>
+      </div>
+      <button class="btn-action-primary" onclick="adminGuardarLote()">Asignar Lote de Mercancía</button>
+
+      <div class="form-label" style="margin-top: 6px;">Historial de Asignaciones</div>
+      <div class="list-box" id="adminListaLotes"></div>
+    </div>
+
+    <!-- Subvista: Ajustes Generales, Anuncio y Cuentas -->
+    <div id="admTabAjustes" style="display: none; flex-direction: column; gap: 10px;">
+      <div class="form-group">
+        <label class="form-label">Texto del Anuncio / Promoción Portada</label>
+        <input type="text" id="cfgPromo" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tasa Oficial BCV (Bs por $)</label>
+        <input type="number" id="cfgTasa" class="form-input" step="0.01">
+      </div>
+      <div class="form-group">
+        <label class="form-label">PIN de Acceso al Panel Dueño (4 Dígitos)</label>
+        <input type="text" id="cfgPin" class="form-input" maxlength="4">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Titular de las Cuentas</label>
+        <input type="text" id="cfgTitular" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Cédula del Titular</label>
+        <input type="text" id="cfgCedula" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Teléfono Pago Móvil / Contacto</label>
+        <input type="text" id="cfgPagoMovilTelf" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Banco Pago Móvil</label>
+        <input type="text" id="cfgPagoMovilBanco" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Número de Cuenta Bancaria Banesco</label>
+        <input type="text" id="cfgCuentaNum" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Binance Pay ID</label>
+        <input type="text" id="cfgBinance" class="form-input">
+      </div>
+      <button class="btn-action-primary" onclick="adminGuardarConfiguracion()">Guardar Todos los Ajustes</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // =======================================================
+  // CONFIGURACIÓN INICIAL Y DATOS BASE
+  // =======================================================
+  var CONFIG_INICIAL = {
+    pinAdmin: "1234",
+    tasaBCV: 893.22,
+    promo: "¡Por cada 10 unidades de Perfumes cobradas de contado, gana 1 mini spray de 3ml de comisión especial!",
+    titular: "Misael David Fuenmayor Aguirre",
+    cedula: "V-16.246.468",
+    pagoMovilBanco: "Banesco (0134)",
+    pagoMovilTelf: "0412-3184756",
+    cuentaNum: "0134-0131-40-1312237032",
+    binanceId: "981715646"
+  };
+
+  // Base de datos limpia sin usuarios demo
+  var COBRADORES_INICIAL = [];
+  var CLIENTES_INICIAL = [];
+
+  // Estado cargado de inmediato desde LocalStorage para apertura instantánea
+  var appConfig = JSON.parse(localStorage.getItem('fito_config')) || CONFIG_INICIAL;
+  var cobradores = JSON.parse(localStorage.getItem('fito_cobradores')) || COBRADORES_INICIAL;
+  var clientes = JSON.parse(localStorage.getItem('fito_clientes')) || CLIENTES_INICIAL;
+  var cobros = JSON.parse(localStorage.getItem('fito_cobros')) || [];
+  var rendiciones = JSON.parse(localStorage.getItem('fito_rendiciones')) || [];
+  var lotes = JSON.parse(localStorage.getItem('fito_lotes')) || [];
+
+  var queryParams = new URLSearchParams(window.location.search);
+  var paramCobrador = queryParams.get('cobrador');
+  var esRutaIndividual = !!paramCobrador;
+
+  // =======================================================
+  // FIREBASE REALTIME DATABASE - CONEXIÓN REST NATIVA
+  // (Sin librerías externas que rompan la página en móvil)
+  // =======================================================
+  var FIREBASE_URL = "https://ajuste-100-default-rtdb.firebaseio.com/ajuste100_control.json";
+
+  function sincronizarConFirebase() {
+    fetch(FIREBASE_URL)
+      .then(function(res) {
+        if (!res.ok) throw new Error("Error HTTP: " + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        if (data) {
+          if (data.config) appConfig = data.config;
+          if (Array.isArray(data.cobradores)) cobradores = data.cobradores;
+          if (Array.isArray(data.clientes)) clientes = data.clientes;
+          if (Array.isArray(data.cobros)) cobros = data.cobros;
+          if (Array.isArray(data.rendiciones)) rendiciones = data.rendiciones;
+          if (Array.isArray(data.lotes)) lotes = data.lotes;
+          guardarLocalmente();
+          actualizarVistas();
+          actualizarCalcEquivalenteBs();
+        } else {
+          // La base de datos está vacía: la inicializamos con los datos locales
+          persistirDatos();
+        }
+        actualizarEstadoNube(true);
+      })
+      .catch(function(err) {
+        console.warn("Aviso Firebase REST:", err);
+        actualizarEstadoNube(false);
+      });
+  }
+
+  function actualizarEstadoNube(conectado) {
+    var dot = document.getElementById('cloudStatusDot');
+    var txt = document.getElementById('cloudStatusTxt');
+    if (!dot || !txt) return;
+
+    if (conectado) {
+      dot.classList.add('online');
+      txt.innerText = "Firebase Sincronizado";
+      txt.style.color = "#15803d";
+    } else {
+      dot.classList.remove('online');
+      txt.innerText = "Modo Local Seguro";
+      txt.style.color = "#52796f";
+    }
+  }
+
+  function guardarLocalmente() {
+    localStorage.setItem('fito_config', JSON.stringify(appConfig));
+    localStorage.setItem('fito_cobradores', JSON.stringify(cobradores));
+    localStorage.setItem('fito_clientes', JSON.stringify(clientes));
+    localStorage.setItem('fito_cobros', JSON.stringify(cobros));
+    localStorage.setItem('fito_rendiciones', JSON.stringify(rendiciones));
+    localStorage.setItem('fito_lotes', JSON.stringify(lotes));
+  }
+
+  function persistirDatos() {
+    guardarLocalmente();
+    fetch(FIREBASE_URL, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        config: appConfig,
+        cobradores: cobradores,
+        clientes: clientes,
+        cobros: cobros,
+        rendiciones: rendiciones,
+        lotes: lotes,
+        fechaActualizacion: new Date().toISOString()
+      })
+    })
+    .then(function(res) {
+      if (res.ok) actualizarEstadoNube(true);
+    })
+    .catch(function(err) {
+      console.warn("Aviso de sincronización:", err);
+      actualizarEstadoNube(false);
+    });
+  }
+
+  function cargarFechasDefecto() {
+    var ahoraIso = new Date().toISOString().slice(0, 16);
+    var cF = document.getElementById('cobroFechaHora');
+    var rF = document.getElementById('rendirFechaHora');
+    var lF = document.getElementById('loteFecha');
+    if (cF) cF.value = ahoraIso;
+    if (rF) rF.value = ahoraIso;
+    if (lF) lF.value = ahoraIso;
+  }
+
+  // =======================================================
+  // SEGURIDAD INVISIBLE: 5 TOQUES RÁPIDOS EN EL TÍTULO
+  // =======================================================
+  var contadorToques = 0;
+  var temporizadorToques = null;
+  var intentosFallidosPin = 0;
+  var bloqueoTemporal = false;
+
+  function detectarToquesSecretos() {
+    if (bloqueoTemporal) {
+      alert("Acceso temporalmente bloqueado por intentos erróneos. Espera un momento.");
+      return;
+    }
+
+    contadorToques++;
+    clearTimeout(temporizadorToques);
+    temporizadorToques = setTimeout(function() {
+      contadorToques = 0;
+    }, 1500);
+
+    if (contadorToques >= 5) {
+      contadorToques = 0;
+      abrirModalPin();
+    }
+  }
+
+  // =======================================================
+  // TECLADO PIN TÁCTIL EN PANTALLA
+  // =======================================================
+  var pinBuffer = "";
+
+  function abrirModalPin() {
+    pinBuffer = "";
+    actualizarPuntosPin();
+    document.getElementById('modalPin').style.display = 'flex';
+  }
+
+  function cerrarModalPin() {
+    pinBuffer = "";
+    document.getElementById('modalPin').style.display = 'none';
+  }
+
+  function presionarTeclaPin(digito) {
+    if (pinBuffer.length < 4) {
+      pinBuffer += digito;
+      actualizarPuntosPin();
+      if (pinBuffer.length === 4) {
+        setTimeout(validarPinIngresado, 120);
+      }
+    }
+  }
+
+  function borrarTeclaPin() {
+    if (pinBuffer.length > 0) {
+      pinBuffer = pinBuffer.slice(0, -1);
+      actualizarPuntosPin();
+    }
+  }
+
+  function actualizarPuntosPin() {
+    for (var i = 0; i < 4; i++) {
+      var dot = document.getElementById('dot' + i);
+      if (dot) {
+        if (i < pinBuffer.length) {
+          dot.classList.add('filled');
+        } else {
+          dot.classList.remove('filled');
+        }
+      }
+    }
+  }
+
+  function validarPinIngresado() {
+    if (pinBuffer === appConfig.pinAdmin) {
+      intentosFallidosPin = 0;
+      cerrarModalPin();
+      abrirPanelAdmin();
+    } else {
+      intentosFallidosPin++;
+      pinBuffer = "";
+      actualizarPuntosPin();
+      
+      if (intentosFallidosPin >= 3) {
+        cerrarModalPin();
+        bloqueoTemporal = true;
+        alert("3 intentos fallidos consecutivos. El acceso al Panel Dueño ha sido suspendido temporalmente por 30 segundos.");
+        setTimeout(function() {
+          bloqueoTemporal = false;
+          intentosFallidosPin = 0;
+        }, 30000);
+      } else {
+        alert("PIN incorrecto. Te quedan " + (3 - intentosFallidosPin) + " intento(s).");
+      }
+    }
+  }
+
+  function abrirPanelAdmin() {
+    document.getElementById('modalAdmin').style.display = 'flex';
+    cargarDatosEnFormularioAjustes();
+  }
+
+  function cerrarPanelAdmin() {
+    document.getElementById('modalAdmin').style.display = 'none';
+  }
+
+  // =======================================================
+  // COMPARTIR POR WHATSAPP
+  // =======================================================
+  function compartirWhatsApp() {
+    var cobradorActual = obtenerCobradorActivo();
+    if (window.location.protocol === 'content:' || window.location.protocol === 'file:') {
+      alert("Atención: Estás ejecutando el archivo localmente en tu teléfono. Para que otro celular lo abra por enlace web directo, sube el archivo a tu hosting o envíale el archivo directamente.");
+      return;
+    }
+    var url = window.location.origin + window.location.pathname;
+    if (cobradorActual && cobradorActual !== "General") {
+      url += "?cobrador=" + encodeURIComponent(cobradorActual);
+    }
+    var texto = encodeURIComponent("Hola! Aquí tienes el acceso a la plataforma de Fitocosmética y Perfumes 100%: " + url);
+    window.open("https://api.whatsapp.com/send?text=" + texto, '_blank');
+  }
+
+  function compartirRutaCobrador(nombreCobrador) {
+    if (window.location.protocol === 'content:' || window.location.protocol === 'file:') {
+      alert("Para compartir el enlace web directo a " + nombreCobrador + ", sube la app a tu hosting/Firebase Hosting.");
+      return;
+    }
+    var url = window.location.origin + window.location.pathname + "?cobrador=" + encodeURIComponent(nombreCobrador);
+    var texto = encodeURIComponent("Hola " + nombreCobrador + ", aquí tienes tu enlace exclusivo de cobranzas para tu ruta de trabajo en Fitocosmética y Perfumes 100%: " + url);
+    window.open("https://api.whatsapp.com/send?text=" + texto, '_blank');
+  }
+
+  function copiarEnlaceCobrador(nombreCobrador) {
+    var url = window.location.origin + window.location.pathname + "?cobrador=" + encodeURIComponent(nombreCobrador);
+    var aux = document.createElement("input");
+    aux.setAttribute("value", url);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+    alert("Enlace individual de " + nombreCobrador + " copiado al portapapeles.");
+  }
+
+  // Identificar el cobrador activo respetando el bloqueo de seguridad
+  function obtenerCobradorActivo() {
+    if (esRutaIndividual && paramCobrador) {
+      return paramCobrador;
+    }
+    var selCob = document.getElementById('selCobradorActivo');
+    return selCob ? selCob.value : "";
+  }
+
+  // =======================================================
+  // NAVEGACIÓN ENTRE PESTAÑAS
+  // =======================================================
+  function cambiarPestana(idTab, btn) {
+    ['tabCobrar', 'tabRendir', 'tabNuevoCli', 'tabCuentas'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    document.querySelectorAll('.tabs-strip .tab-pill').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    var target = document.getElementById(idTab);
+    if (target) target.style.display = 'flex';
+    if (btn) btn.classList.add('active');
+  }
+
+  function cambiarSubtabAdmin(idSubtab, btn) {
+    ['admTabCobradores', 'admTabCobros', 'admTabRendiciones', 'admTabMercancia', 'admTabAjustes'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    document.querySelectorAll('.admin-subtabs .admin-subtab-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    var target = document.getElementById(idSubtab);
+    if (target) target.style.display = 'flex';
+    if (btn) btn.classList.add('active');
+  }
+
+  // =======================================================
+  // CONVERSIÓN EN VIVO SEGÚN TASA BCV
+  // =======================================================
+  function actualizarCalcEquivalenteBs() {
+    var usd = parseFloat(document.getElementById('cobroMontoUSD').value) || 0;
+    var tasa = appConfig ? appConfig.tasaBCV : 893.22;
+    var bs = usd * tasa;
+    var lbl = document.getElementById('cobroEquivBsLbl');
+    if (lbl) {
+      lbl.innerText = "Bs. " + bs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+  }
+
+  function alCambiarCobradorActivo() {
+    var cobradorNombre = obtenerCobradorActivo();
+    var cobObj = cobradores.find(function(c) { return c.nombre === cobradorNombre; });
+    var badge = document.getElementById('lblBadgePorcentaje');
+    if (badge) {
+      badge.innerText = cobObj ? "Comisión: " + cobObj.comision + "%" : "Comisión: 0%";
+    }
+    actualizarVistas();
+  }
+
+  // =======================================================
+  // ACCIÓN: REGISTRAR COBRO
+  // =======================================================
+  function ejecutarCobro() {
+    var cobrador = obtenerCobradorActivo();
+    var fechaHora = document.getElementById('cobroFechaHora').value;
+    var clienteId = document.getElementById('selClienteCobro').value;
+    var montoUsd = parseFloat(document.getElementById('cobroMontoUSD').value) || 0;
+    var metodo = document.getElementById('selCobroMetodo').value;
+    var ref = document.getElementById('cobroReferencia').value.trim() || "Sin referencia";
+
+    if (!clienteId) {
+      alert("Por favor selecciona un cliente de la lista.");
+      return;
+    }
+    if (montoUsd <= 0) {
+      alert("Por favor introduce un monto cobrado válido mayor a 0.");
+      return;
+    }
+
+    var cliente = clientes.find(function(c) { return c.id == clienteId; });
+    if (!cliente) return;
+
+    cliente.deuda = Math.max(0, cliente.deuda - montoUsd);
+
+    var cobObj = cobradores.find(function(c) { return c.nombre === cobrador; });
+    var comisionPct = cobObj ? cobObj.comision : 0;
+    var comisionUSD = montoUsd * (comisionPct / 100);
+
+    cobros.push({
+      id: Date.now(),
+      cobrador: cobrador || "General",
+      cliente: cliente.nombre,
+      fechaHora: fechaHora ? fechaHora.replace('T', ' ') : new Date().toLocaleString(),
+      montoUsd: montoUsd,
+      montoBs: montoUsd * appConfig.tasaBCV,
+      metodo: metodo,
+      referencia: ref,
+      comisionPct: comisionPct,
+      comisionUsd: comisionUSD
+    });
+
+    persistirDatos();
+    document.getElementById('cobroMontoUSD').value = '';
+    document.getElementById('cobroReferencia').value = '';
+    actualizarCalcEquivalenteBs();
+    actualizarVistas();
+
+    alert("Cobro de $" + montoUsd.toFixed(2) + " registrado exitosamente.\nDeuda restante de " + cliente.nombre + ": $" + cliente.deuda.toFixed(2) + "\nComisión del cobrador (" + comisionPct + "%): $" + comisionUSD.toFixed(2));
+  }
+
+  // =======================================================
+  // ACCIÓN: RENDIR FONDOS AL DUEÑO
+  // =======================================================
+  function ejecutarRendicion() {
+    var cobrador = obtenerCobradorActivo();
+    var fechaHora = document.getElementById('rendirFechaHora').value;
+    var tipo = document.getElementById('rendirTipo').value;
+    var monto = parseFloat(document.getElementById('rendirMontoUSD').value) || 0;
+    var ref = document.getElementById('rendirReferencia').value.trim() || "Entrega en mano";
+
+    if (monto <= 0) {
+      alert("Por favor introduce un monto entregado válido mayor a 0.");
+      return;
+    }
+
+    rendiciones.push({
+      id: Date.now(),
+      cobrador: cobrador || "General",
+      fechaHora: fechaHora ? fechaHora.replace('T', ' ') : new Date().toLocaleString(),
+      tipo: tipo,
+      monto: monto,
+      referencia: ref
+    });
+
+    persistirDatos();
+    document.getElementById('rendirMontoUSD').value = '';
+    document.getElementById('rendirReferencia').value = '';
+    actualizarVistas();
+    alert("Rendición de $" + monto.toFixed(2) + " registrada exitosamente.");
+  }
+
+  // =======================================================
+  // ACCIÓN: CLIENTES (ALTA Y DAR DE BAJA)
+  // =======================================================
+  function ejecutarGuardarCliente() {
+    var nombre = document.getElementById('nuevoCliNombre').value.trim();
+    var telf = document.getElementById('nuevoCliTelf').value.trim();
+    var dir = document.getElementById('nuevoCliDir').value.trim();
+    var deuda = parseFloat(document.getElementById('nuevoCliDeuda').value) || 0;
+    
+    // Si el cobrador está en su ruta individual, el cliente queda ligado estrictamente a él
+    var cobrador = esRutaIndividual && paramCobrador 
+      ? paramCobrador 
+      : (document.getElementById('nuevoCliCobradorSel') ? document.getElementById('nuevoCliCobradorSel').value : "General");
+
+    if (!nombre) {
+      alert("Por favor escribe el nombre del cliente.");
+      return;
+    }
+
+    clientes.push({
+      id: Date.now(),
+      nombre: nombre,
+      telefono: telf || "Sin teléfono",
+      direccion: dir || "Sin dirección",
+      deuda: deuda,
+      cobrador: cobrador || "General"
+    });
+
+    persistirDatos();
+    document.getElementById('nuevoCliNombre').value = '';
+    document.getElementById('nuevoCliTelf').value = '';
+    document.getElementById('nuevoCliDir').value = '';
+    document.getElementById('nuevoCliDeuda').value = '';
+    actualizarVistas();
+    alert("Cliente '" + nombre + "' registrado con éxito con saldo de $" + deuda.toFixed(2) + ".");
+  }
+
+  function darDeBajaCliente(id) {
+    var cli = clientes.find(function(c) { return c.id === id; });
+    if (!cli) return;
+
+    if (confirm("¿Dar de baja y eliminar a '" + cli.nombre + "' de la lista de cobranzas?")) {
+      clientes = clientes.filter(function(c) { return c.id !== id; });
+      persistirDatos();
+      actualizarVistas();
+    }
+  }
+
+  // =======================================================
+  // ACCIÓN: COBRADORES (ALTA Y DAR DE BAJA)
+  // =======================================================
+  function adminGuardarCobrador() {
+    var nombre = document.getElementById('adminNuevoCobradorNombre').value.trim();
+    var comision = parseFloat(document.getElementById('adminNuevoCobradorPct').value) || 0;
+
+    if (!nombre) {
+      alert("Por favor ingresa el nombre del cobrador.");
+      return;
+    }
+
+    cobradores.push({ id: Date.now(), nombre: nombre, comision: comision });
+    persistirDatos();
+    document.getElementById('adminNuevoCobradorNombre').value = '';
+    document.getElementById('adminNuevoCobradorPct').value = '';
+    actualizarVistas();
+    alert("Cobrador '" + nombre + "' dado de alta con " + comision + "% de comisión.");
+  }
+
+  function darDeBajaCobrador(id) {
+    var cob = cobradores.find(function(c) { return c.id === id; });
+    if (!cob) return;
+
+    if (confirm("¿Dar de baja al cobrador '" + cob.nombre + "'? Sus clientes asignados se moverán al cobrador 'General'.")) {
+      clientes.forEach(function(c) {
+        if (c.cobrador.toLowerCase() === cob.nombre.toLowerCase()) {
+          c.cobrador = "General";
+        }
+      });
+      cobradores = cobradores.filter(function(c) { return c.id !== id; });
+      persistirDatos();
+      actualizarVistas();
+    }
+  }
+
+  // =======================================================
+  // ACCIÓN: ASIGNACIÓN DE LOTES DE PERFUMES (ADMIN)
+  // =======================================================
+  function adminGuardarLote() {
+    var fecha = document.getElementById('loteFecha').value;
+    var producto = document.getElementById('loteProducto').value.trim();
+    var cant = parseInt(document.getElementById('loteCantidad').value) || 0;
+    var cobrador = document.getElementById('loteCobradorSel').value;
+
+    if (!producto || cant <= 0 || !cobrador) {
+      alert("Por favor completa el producto, cantidad válida y selecciona el cobrador.");
+      return;
+    }
+
+    lotes.push({
+      id: Date.now(),
+      fecha: fecha ? fecha.replace('T', ' ') : new Date().toLocaleString(),
+      producto: producto,
+      cantidad: cant,
+      cobrador: cobrador
+    });
+
+    persistirDatos();
+    document.getElementById('loteProducto').value = '';
+    document.getElementById('loteCantidad').value = '';
+    actualizarVistas();
+    alert("Lote de " + cant + " unidades de '" + producto + "' asignado a " + cobrador + ".");
+  }
+
+  // =======================================================
+  // ACCIÓN: AJUSTES GENERALES DEL DUEÑO
+  // =======================================================
+  function adminGuardarConfiguracion() {
+    appConfig.promo = document.getElementById('cfgPromo').value.trim();
+    appConfig.tasaBCV = parseFloat(document.getElementById('cfgTasa').value) || appConfig.tasaBCV;
+    appConfig.pinAdmin = document.getElementById('cfgPin').value.trim() || "1234";
+    appConfig.titular = document.getElementById('cfgTitular').value.trim();
+    appConfig.cedula = document.getElementById('cfgCedula').value.trim();
+    appConfig.pagoMovilTelf = document.getElementById('cfgPagoMovilTelf').value.trim();
+    // 3. Selectores de Cobradores con CONTROL DE ACCESO
+    var grpSelector = document.getElementById('grpCobradorSelector');
+    var grpFijo = document.getElementById('grpCobradorFijo');
+    var selCobrador = document.getElementById('selCobradorActivo');
+    var lblFijoNom = document.getElementById('lblCobradorFijoNombre');
+    var lblFijoTag = document.getElementById('lblCobradorFijoTag');
+
+    var cobradorActual = "";
+
+    if (esRutaIndividual && paramCobrador) {
+      // Bloqueo total: el cobrador NO ve a otros cobradores
+      if (grpSelector) grpSelector.style.display = 'none';
+      if (grpFijo) grpFijo.style.display = 'flex';
+      
+      var cobObj = cobradores.find(function(c) { 
+        return c.nombre.trim().toLowerCase() === paramCobrador.trim().toLowerCase(); 
+      });
+
+      var pct = cobObj ? cobObj.comision : 0;
+      cobradorActual = cobObj ? cobObj.nombre : paramCobrador;
+
+      if (lblFijoNom) lblFijoNom.innerText = cobradorActual;
+      if (lblFijoTag) lblFijoTag.innerText = "Comisión: " + pct + "% (Bloqueado)";
+    } else {
+      // Modo Administrador / General: selector activo
+      if (grpSelector) grpSelector.style.display = 'flex';
+      if (grpFijo) grpFijo.style.display = 'none';
+
+      var valorPrevio = selCobrador ? selCobrador.value : "";
+      if (selCobrador) {
+        selCobrador.innerHTML = '';
+        if (cobradores.length === 0) {
+          selCobrador.innerHTML = '<option value="">Sin cobradores registrados (Usa el Panel Dueño)</option>';
+        } else {
+          cobradores.forEach(function(cob) {
+            selCobrador.innerHTML += '<option value="' + cob.nombre + '">' + cob.nombre + ' (' + cob.comision + '%)</option>';
+          });
+        }
+
+        if (valorPrevio && cobradores.some(function(c) { return c.nombre === valorPrevio; })) {
+          selCobrador.value = valorPrevio;
+        }
+      }
+      cobradorActual = selCobrador ? selCobrador.value : "";
+    }
+
+    var selCliCob = document.getElementById('nuevoCliCobradorSel');
+    if (selCliCob) {
+      selCliCob.innerHTML = '<option value="General">Cobrador General</option>';
+      cobradores.forEach(function(cob) {
+        selCliCob.innerHTML += '<option value="' + cob.nombre + '">' + cob.nombre + '</option>';
+      });
+      // Si el cobrador está en ruta individual, fijamos y deshabilitamos el campo
+      if (esRutaIndividual && paramCobrador) {
+        selCliCob.value = cobradorActual;
+        selCliCob.disabled = true;
+      } else {
+        selCliCob.disabled = false;
+      }
+    }
+
+    var selLoteCob = document.getElementById('loteCobradorSel');
+    if (selLoteCob) {
+      selLoteCob.innerHTML = '<option value="">-- Seleccionar Cobrador --</option>';
+      cobradores.forEach(function(cob) {
+        selLoteCob.innerHTML += '<option value="' + cob.nombre + '">' + cob.nombre + '</option>';
+      });
+    }
+
+    var cobObjActual = cobradores.find(function(c) { return c.nombre === cobradorActual; });
+    var badgePct = document.getElementById('lblBadgePorcentaje');
+    var sesionAct = document.getElementById('lblSesionActiva');
+    if (badgePct) badgePct.innerText = cobObjActual ? "Comisión: " + cobObjActual.comision + "%" : "Comisión: 0%";
+    if (sesionAct) {
+      sesionAct.innerText = cobradorActual 
+        ? (esRutaIndividual ? "Ruta Asignada: " + cobradorActual : "Ruta Activa: " + cobradorActual)
+        : "Ruta: Consolidado General";
+    }
+
+    // 4. Clientes según Cobrador activo (Seguridad: sólo ve sus propios clientes)
+    var clientesParaRuta = cobradorActual
+      ? clientes.filter(function(c) { 
+          return c.cobrador.trim().toLowerCase() === cobradorActual.trim().toLowerCase() || c.cobrador === "General"; 
+        })
+      : clientes;
+
+    var selCliente = document.getElementById('selClienteCobro');
+    if (selCliente) {
+      selCliente.innerHTML = '<option value="">-- Selecciona el cliente --</option>';
+      if (clientesParaRuta.length === 0) {
+        selCliente.innerHTML = '<option value="">No tienes clientes registrados aún</option>';
+      } else {
+        clientesParaRuta.forEach(function(c) {
+          selCliente.innerHTML += '<option value="' + c.id + '">' + c.nombre + ' (Debe: $' + c.deuda.toFixed(2) + ')</option>';
+        });
+      }
+    }
+
+    // 5. Métricas Generales y de Ruta (Seguridad: el cobrador individual solo ve sus números)
+    var clientesMetricas = esRutaIndividual ? clientesParaRuta : clientes;
+    var carteraCalle = clientesMetricas.reduce(function(acc, c) { return acc + c.deuda; }, 0);
+    var cobrosFiltrados = cobradorActual
+      ? cobros.filter(function(c) { return c.cobrador.trim().toLowerCase() === cobradorActual.trim().toLowerCase(); })
+      : cobros;
+
+    var totalCobradoUSD = cobrosFiltrados.reduce(function(acc, c) { return acc + c.montoUsd; }, 0);
+    var totalCobradoBs = cobrosFiltrados.reduce(function(acc, c) { return acc + c.montoBs; }, 0);
+    var totalComisiones = cobrosFiltrados.reduce(function(acc, c) { return acc + c.comisionUsd; }, 0);
+    
+    var rendicionesFiltradas = cobradorActual
+      ? rendiciones.filter(function(r) { return r.cobrador.trim().toLowerCase() === cobradorActual.trim().toLowerCase(); })
+      : rendiciones;
+    var totalRendido = rendicionesFiltradas.reduce(function(acc, r) { return acc + r.monto; }, 0);
+
+    var elCart = document.getElementById('metCarteraTotal');
+    var elCobU = document.getElementById('metCobradoUSD');
+    var elCobB = document.getElementById('metCobradoBs');
+    var elComi = document.getElementById('metComisionesTotal');
+    var elRend = document.getElementById('metRendidoTotal');
+
+    if (elCart) elCart.innerText = "$" + carteraCalle.toFixed(2);
+    if (elCobU) elCobU.innerText = "$" + totalCobradoUSD.toFixed(2);
+    if (elCobB) elCobB.innerText = "Bs. " + totalCobradoBs.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (elComi) elComi.innerText = "$" + totalComisiones.toFixed(2);
+    if (elRend) elRend.innerText = "$" + totalRendido.toFixed(2);
+
+    // 6. Lista de Clientes con botón 'Dar de Baja' (En ruta individual solo ve los suyos)
+    var contClientes = document.getElementById('listaClientesRegistrados');
+    if (contClientes) {
+      if (clientesParaRuta.length === 0) {
+        contClientes.innerHTML = '<div class="empty-alert">No hay clientes en esta ruta todavía.</div>';
+      } else {
+        contClientes.innerHTML = '';
+        clientesParaRuta.forEach(function(c) {
+          contClientes.innerHTML += 
+            '<div class="list-card">' +
+              '<div>' +
+                '<strong>' + c.nombre + '</strong> <span style="color:var(--text-muted); font-size:11px;">(' + c.cobrador + ')</span><br>' +
+                '<span style="color:var(--text-muted); font-size:11px;">' + c.telefono + ' • ' + c.direccion + '</span><br>' +
+                '<span style="color:var(--danger-dark); font-weight:700;">Deuda: $' + c.deuda.toFixed(2) + '</span>' +
+              '</div>' +
+              '<button class="btn-remove-soft" onclick="darDeBajaCliente(' + c.id + ')">Dar de Baja</button>' +
+            '</div>';
+        });
+      }
+    }
+
+    // 7. Lista Admin de Cobradores con Generador de Enlaces Seguros
+    var contAdminCobradores = document.getElementById('adminListaCobradores');
+    if (contAdminCobradores) {
+      if (cobradores.length === 0) {
+        contAdminCobradores.innerHTML = '<div class="empty-alert">No hay cobradores activos. Ingresa uno arriba para comenzar.</div>';
+      } else {
+        contAdminCobradores.innerHTML = '';
+        cobradores.forEach(function(cob) {
+          contAdminCobradores.innerHTML += 
+            '<div class="list-card" style="flex-direction:column; align-items:flex-start; gap:8px;">' +
+              '<div style="display:flex; justify-content:space-between; width:100%; align-items:center;">' +
+                '<div>' +
+                  '<strong>' + cob.nombre + '</strong><br>' +
+                  '<span style="color:var(--primary-dark); font-weight:700; font-size:11px;">Comisión: ' + cob.comision + '%</span>' +
+                '</div>' +
+                '<button class="btn-remove-soft" onclick="darDeBajaCobrador(' + cob.id + ')">Dar de Baja</button>' +
+              '</div>' +
+              '<div style="display:flex; gap:6px; width:100%;">' +
+                '<button style="flex:1; background:#eef7f2; border:1px solid var(--accent-mint); color:var(--primary-deep); font-size:10.5px; font-weight:700; padding:6px; border-radius:6px; cursor:pointer;" onclick="copiarEnlaceCobrador(\'' + cob.nombre + '\')">📋 Copiar Enlace</button>' +
+                '<button style="flex:1; background:#dcfce7; border:1px solid #86efac; color:#15803d; font-size:10.5px; font-weight:700; padding:6px; border-radius:6px; cursor:pointer;" onclick="compartirRutaCobrador(\'' + cob.nombre + '\')">📲 Enviar WhatsApp</button>' +
+              '</div>' +
+            '</div>';
+        });
+      }
+    }
+
+    // 8. Historial Admin de Cobros
+    var contAdminCobros = document.getElementById('adminListaHistorialCobros');
+    if (contAdminCobros) {
+      if (cobros.length === 0) {
+        contAdminCobros.innerHTML = '<div class="empty-alert">No se han registrado cobros todavía.</div>';
+      } else {
+        contAdminCobros.innerHTML = '';
+        cobros.slice().reverse().forEach(function(cob) {
+          contAdminCobros.innerHTML += 
+            '<div class="list-card">' +
+              '<div>' +
+                '<strong>' + cob.cliente + '</strong> (por ' + cob.cobrador + ')<br>' +
+                '<span style="color:var(--text-muted); font-size:11px;">' + cob.fechaHora + ' • ' + cob.metodo + ' (Ref: ' + cob.referencia + ')</span><br>' +
+                '<span style="color:#0d9488; font-size:11px; font-weight:600;">Ganancia Cobrador: $' + cob.comisionUsd.toFixed(2) + ' (' + cob.comisionPct + '%)</span>' +
+              '</div>' +
+              '<div style="font-weight:800; color:var(--primary-dark); font-size:13.5px;">+$' + cob.montoUsd.toFixed(2) + '</div>' +
+            '</div>';
+        });
+      }
+    }
+
+    // 9. Historial Admin de Rendiciones
+    var contAdminRend = document.getElementById('adminListaHistorialRendiciones');
+    if (contAdminRend) {
+      if (rendiciones.length === 0) {
+        contAdminRend.innerHTML = '<div class="empty-alert">No hay rendiciones entregadas al dueño.</div>';
+      } else {
+        contAdminRend.innerHTML = '';
+        rendiciones.slice().reverse().forEach(function(r) {
+          contAdminRend.innerHTML += 
+            '<div class="list-card">' +
+              '<div>' +
+                '<strong>' + r.cobrador + '</strong>: ' + r.tipo + '<br>' +
+                '<span style="color:var(--text-muted); font-size:11px;">' + r.fechaHora + ' • Ref: ' + r.referencia + '</span>' +
+              '</div>' +
+              '<div style="font-weight:800; color:#2a9d8f; font-size:13.5px;">+$' + r.monto.toFixed(2) + '</div>' +
+            '</div>';
+        });
+      }
+    }
+
+    // 10. Historial Admin de Lotes de Perfumes
+    var contAdminLotes = document.getElementById('adminListaLotes');
+    if (contAdminLotes) {
+      if (lotes.length === 0) {
+        contAdminLotes.innerHTML = '<div class="empty-alert">No hay lotes asignados.</div>';
+      } else {
+        contAdminLotes.innerHTML = '';
+        lotes.slice().reverse().forEach(function(l) {
+          contAdminLotes.innerHTML += 
+            '<div class="list-card">' +
+              '<div>' +
+                '<strong>' + l.producto + '</strong> → ' + l.cobrador + '<br>' +
+                '<span style="color:var(--text-muted); font-size:11px;">' + l.fecha + '</span>' +
+              '</div>' +
+              '<div style="font-weight:800; color:var(--primary-dark); font-size:13px;">' + l.cantidad + ' frascos</div>' +
+            '</div>';
+        });
+      }
+    }
+  }
+
+  // Apertura instantánea sin esperas
+  window.addEventListener('DOMContentLoaded', function() {
+    cargarFechasDefecto();
+    actualizarVistas();
+    actualizarCalcEquivalenteBs();
+    sincronizarConFirebase();
+
+    // Sincronización periódica cada 12 segundos en segundo plano
+    setInterval(sincronizarConFirebase, 12000);
+  });
+</script>
+
+</body>
+</html>
+```
